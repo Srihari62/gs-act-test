@@ -5,6 +5,7 @@ on:
       - closed
 jobs:
   build:
+    name: test
     if: github.event.pull_request.merged == true
     runs-on: ${{ matrix.os }}
     strategy:
