@@ -15,4 +15,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: run test
-        run: echo "test run successfully"
+        run: echo "Hello test"
