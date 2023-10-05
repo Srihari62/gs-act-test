@@ -2,7 +2,8 @@ name: Run Tests
 on:
   pull_request:
     types:
-      - closed
+      - opened
+      - synchronize
 jobs:
   build:
     name: test
