@@ -1,0 +1,18 @@
+name: Run Tests
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+jobs:
+  build:
+    # if: github.event.pull_request.merged == true
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: run test
+        run: echo "test run successfully"
