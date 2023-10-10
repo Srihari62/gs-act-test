@@ -20,7 +20,7 @@ jobs:
 
       - name: Clone Another Repository
         run: |
-          git clone http://github.com/godspeedsystems/gs-test-project.git
+          git clone https://github.com/Srihari62/gs-test-project.git
           cd repo  # Change to the cloned repository directory
           npm install
           # Install dependencies or set up environment as needed
