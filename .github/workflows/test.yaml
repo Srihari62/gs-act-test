@@ -1,9 +1,10 @@
 name: Clone and Test Another Repository
 
 on:
-  push:
-    branches-ignore:
-      - "*"
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   build:
@@ -20,7 +21,7 @@ jobs:
 
       - name: Clone Another Repository
         run: |
-          git clone https://github.com/Srihari62/gs-test-project.git
+          git clone http://github.com/Srihari62/gs-test-project.git
           cd repo  # Change to the cloned repository directory
           npm install
           # Install dependencies or set up environment as needed
