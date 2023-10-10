@@ -1,9 +1,10 @@
 name: Clone and Test Another Repository
 
 on:
-  push:
-    branches-ignore:
-      - "*"
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   build:
