@@ -2,8 +2,8 @@ name: Clone and Test Another Repository
 
 on:
   push:
-    branches:
-      - master # Define the branch on which to trigger the workflow
+    branches-ignore:
+      - "*"
 
 jobs:
   build:
@@ -13,13 +13,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16 # Replace with the desired Node.js version
+
       - name: Clone Another Repository
         run: |
-          git clone https://github.com/godspeedsystems/gs-test-project.git
-          # You can replace the URL with the repository you want to clone
-
-      - name: Set Up Dependencies and Environment
-        run: |
+          git clone http://github.com/godspeedsystems/gs-test-project.git
           cd repo  # Change to the cloned repository directory
           npm install
           # Install dependencies or set up environment as needed
