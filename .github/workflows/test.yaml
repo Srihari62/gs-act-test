@@ -7,28 +7,29 @@ on:
       - synchronize
 
 jobs:
-  build:
+  clone_and_test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          repository: Srihari62/gs-test-project
+          ref: ${{ github.event.pull_request.head.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
 
-      - name: Install Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16 # Replace with the desired Node.js version
+          node-version: 14 # Specify the version of Node.js you want to use
 
-      - name: Clone Another Repository
+      - name: Install Dependencies
         run: |
-          git clone http://github.com/Srihari62/gs-test-project.git
-          cd repo  # Change to the cloned repository directory
+          cd gs-test-project  # Change to the cloned repository's directory
           npm install
-          # Install dependencies or set up environment as needed
 
       - name: Run Tests
         run: |
-          cd repo  # Change to the cloned repository directory
-          npm run dev 
+          cd gs-test-project  # Change to the cloned repository's directory
           npm run test
-          # Run your tests or perform actions
