@@ -19,7 +19,7 @@ jobs:
 
   manual-task:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'&& github.actor == 'Srihari62' # Only run for manual triggers
+    if: github.event_name == 'workflow_dispatch'&& github.actor == 'Srihari' # Only run for manual triggers
 
     steps:
       - name: Checkout code
