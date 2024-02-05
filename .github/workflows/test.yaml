@@ -1,28 +1,31 @@
 name: Build and Test
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
+  workflow_dispatch: # This event enables manual triggering
 
 jobs:
-  build:
+  automatic-build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      - name: Run automatic build
+        run: echo "run build done"
 
-      # - name: Install dependencies
-      #   run: npm install
+  manual-task:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' # Only run for manual triggers
 
-      # - name: Run build
-      #   run: CI=false  npm run build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Run build
-        run: echo "Run Build done"
+      - name: Run manual task
+        run: echo "This is a manual task"
 
+      # Add more steps as needed for manual tasks.
