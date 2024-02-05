@@ -8,7 +8,6 @@ on:
 jobs:
   automatic-build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,4 +15,3 @@ jobs:
       - name: Run automatic build
         run: echo "run build done"
 
-      # Add more steps as needed for manual tasks.
