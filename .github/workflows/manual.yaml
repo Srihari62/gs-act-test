@@ -1,0 +1,19 @@
+name: Manual trigger
+
+on:
+  workflow_dispatch: # This event enables manual triggering
+
+jobs:
+
+  manual-task:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' # Only run for manual triggers
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run manual task
+        run: echo "This is a manual task"
+
+      # Add more steps as needed for manual tasks.

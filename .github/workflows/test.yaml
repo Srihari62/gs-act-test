@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch: # This event enables manual triggering
 
 jobs:
   automatic-build:
@@ -16,16 +15,5 @@ jobs:
 
       - name: Run automatic build
         run: echo "run build done"
-
-  manual-task:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'&& github.actor == 'Srihari' # Only run for manual triggers
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run manual task
-        run: echo "This is a manual task"
 
       # Add more steps as needed for manual tasks.
