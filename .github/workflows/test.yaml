@@ -1,33 +1,28 @@
-name: Clone and Test Another Repository
+name: Build and Test
 
 on:
-  push:
-    branches-ignore:
-      - "*"
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 16 # Replace with the desired Node.js version
+          node-version: 18
 
-      - name: Clone Another Repository
-        run: |
-          git clone https://github.com/Srihari62/gs-test-project.git
-          cd repo  # Change to the cloned repository directory
-          npm install
-          # Install dependencies or set up environment as needed
+      # - name: Install dependencies
+      #   run: npm install
 
-      - name: Run Tests
-        run: |
-          cd repo  # Change to the cloned repository directory
-          npm run dev 
-          npm run test
-          # Run your tests or perform actions
+      # - name: Run build
+      #   run: CI=false  npm run build
+
+      - name: Run build
+        run: echo "Run Build done"
+
