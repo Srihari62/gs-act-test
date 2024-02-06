@@ -36,8 +36,7 @@ jobs:
           apt-get update && apt-get install -y git
           git config --global user.name "Srihari62"
           git config --global user.email "srihari6281@gmail.com"
-          git remote set-url origin https://github.com/Srihari62/gs-act-test.git 
+          git remote set-url origin https://github.com/Srihari62/git-actions.git 
           git add . 
           git commit -m "Code Transfer" 
           git push -u origin main
-          q
