@@ -31,4 +31,4 @@ jobs:
         run: git remote set-url origin https://github.com/Srihari62/git-actions.git 
 
       - name: Push changes to origin
-        run: git push -u origin test
+        run: git push -u origin master
