@@ -8,14 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+      - name: creates output
+        run:  pwd
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH }}
+          API_TOKEN_GITHUB: ${{ secrets.PAT }}
         with:
-          ref: 'master'
-
-      - name: Push to target repository
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{secrets.PAT}}
-          branch: 'test'
-          repository: Srihari62/gs-act-test
+          source-directory: 'output'
+          destination-github-username: 'Srihari62'
+          destination-repository-name: 'gs-act-test'
+          user-email: srihari6281@gmail.com
+          target-branch: test
