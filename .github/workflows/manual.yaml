@@ -15,27 +15,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
          
-      - name: path 
-        run: | 
-          pwd 
-          ls
-
-      - name: Set up Git
+      - name: change the remote 
         run: |
-          git config --global user.name 'Srihari62'
-          git config --global user.email 'srihari6281@gmail.com'
+          git remote set-url origin git@github.com:Srihari62/git-actions.git
+          git push origin test
 
-      - name: Clone Second Org Repo
-        run: |
-          cd ../..
-          git clone https://${{secrets.PAT}}@github.com/Srihari62/gs-act-test.git
-          pwd
-          ls
 
-      - name: Update Second Org Repo
-        run: |
-          cp -r /home/runner/work/git-actions/gs-actions /home/runner/work/git-act-test
-          cd git-actions
-          git add .
-          git commit -m "Update with latest code from first org repo"
-          git push  origin main
+
+# steps:
+#   add the new origin 
+#   run the build step if success git push(adding a tag)
