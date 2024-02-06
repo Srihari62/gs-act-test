@@ -37,4 +37,4 @@ jobs:
         run: git commit -m "Code Transfer" 
 
       - name: Push changes to origin
-        run: git push -u origin main
+        run: git push -u origin master
