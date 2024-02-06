@@ -1,15 +1,21 @@
-name: Manual trigger
+name: Manual Push
 
 on:
   workflow_dispatch:
 
 jobs:
-
-  manual-task:
+  push:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
 
-      - name: Run manual task
-        run: echo "This is a manual task"
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          ref: repo
+
+      - name: Push to target repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT }}
+          branch: git
+          repository: Srihari62/gs-act-test
