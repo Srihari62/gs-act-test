@@ -17,7 +17,7 @@ jobs:
          
       - name: change the remote 
         run: |
-          git remote set-url origin https://Srihari62:${{secrets.PAT}}@github.com/Srihari62/git-actions.git
+          git remote set-url origin https://github.com/Srihari62/git-actions.git
           git push
 
 
