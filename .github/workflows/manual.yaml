@@ -11,7 +11,7 @@ jobs:
       - name: Creates output folder and remove markdown
         run:  |
               mkdir output
-              cp -r posts output
+              cp -r git-act-test output
       - name: Pushes to public repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
