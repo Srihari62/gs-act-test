@@ -25,6 +25,7 @@ jobs:
 
       - name: Clone Second Org Repo
         run: |
+          cd ..
           git clone https://${{secrets.PAT}}@github.com/Srihari62/gs-act-test.git
           pwd
 
