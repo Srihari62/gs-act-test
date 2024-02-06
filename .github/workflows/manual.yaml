@@ -11,11 +11,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
         with:
-          ref: repo
+          ref: master
 
       - name: Push to target repository
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT }}
-          branch: git
+          branch: test
           repository: Srihari62/gs-act-test
