@@ -18,25 +18,23 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v4
+      - name: Install Git
+        run: sudo apt-get update && sudo apt-get install -y git
 
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Set Git user name
+        run: git config --global user.name "Srihari62"
 
-      - name: Run build
-        id: build
-        run: |
-          echo "hari"
-          echo "::set-output name=build-status::${?}"
+      - name: Set Git user email
+        run: git config --global user.email "srihari6281@gmail.com"
 
-      - name: Change the remote 
-        if: steps.build.outputs.build-status == '0'
-        run: |
-          apt-get update && apt-get install -y git
-          git config --global user.name "Srihari62"
-          git config --global user.email "srihari6281@gmail.com"
-          git remote set-url origin https://github.com/Srihari62/git-actions.git 
-          git add . 
-          git commit -m "Code Transfer" 
-          git push -u origin main
+      - name: Change remote URL
+        run: git remote set-url origin https://github.com/Srihari62/git-actions.git 
+
+      - name: Add changes to Git
+        run: git add . 
+
+      - name: Commit changes
+        run: git commit -m "Code Transfer" 
+
+      - name: Push changes to origin
+        run: git push -u origin main
