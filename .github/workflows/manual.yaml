@@ -26,8 +26,8 @@ jobs:
 
       - name: Update Second Org Repo
         run: |
-          cp -r /path/to/first-repo/* second-repo/
-          cd second-repo
+          cp -r /home/runner/work/gs-act-test/gs-act-test* /home/runner/work/git-actions/git-actions
+          cd git-actions
           git add .
           git commit -m "Update with latest code from first org repo"
           git push  origin main
