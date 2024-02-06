@@ -16,6 +16,6 @@ jobs:
       - name: Push to target repository
         uses: ad-m/github-push-action@master
         with:
-          github_token: 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
+          github_token: ${{secrets.REPO_ACCESS_TOKEN}}
           branch: test
           repository: Srihari62/gs-act-test
