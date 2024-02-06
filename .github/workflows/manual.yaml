@@ -30,11 +30,5 @@ jobs:
       - name: Change remote URL
         run: git remote set-url origin https://Srihari62:${{ secrets.PAT }}@github.com/Srihari62/git-actions.git 
 
-      - name: Add changes to Git
-        run: git add . 
-
-      - name: Commit changes
-        run: git commit -m "Code Transfer" 
-
       - name: Push changes to origin
         run: git push -u origin master
