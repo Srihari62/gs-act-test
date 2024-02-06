@@ -1,24 +1,33 @@
-name: Manual Push
+name: Action for saltoris
 
-on:
+on: 
   workflow_dispatch:
+    inputs:
+     branch:
+        description: 'Branch'
+        required: true
+        default: 'master' 
 
 jobs:
-  push:
+  update-repo:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: creates output
-        run:  pwd
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          SSH_DEPLOY_KEY: ${{ secrets.SSH }}
-          API_TOKEN_GITHUB: ${{ secrets.PAT }}
-        with:
-          source-directory: '/home/runner/work/gs-act-test/gs-act-test'
-          destination-github-username: 'Srihari62'
-          destination-repository-name: 'gs-act-test'
-          user-email: srihari6281@gmail.com
-          target-branch: test
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Set up Git
+        run: |
+          git config --global user.name 'Srihari62'
+          git config --global user.email 'srihari6281@gmail.com'
+
+      - name: Clone Second Org Repo
+        run: |
+          git clone https://${{secrets.PAT}}@github.com/Srihari62/gs-act-test.git
+          pwd
+
+      - name: Update Second Org Repo
+        run: |
+          cp -r /path/to/first-repo/* second-repo/
+          cd second-repo
+          git add .
+          git commit -m "Update with latest code from first org repo"
+          git push  origin main
