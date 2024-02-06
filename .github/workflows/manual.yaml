@@ -16,7 +16,9 @@ jobs:
         uses: actions/checkout@v2
          
       - name: path 
-        run: pwd
+        run: | 
+          pwd 
+          ls
 
       - name: Set up Git
         run: |
@@ -27,6 +29,7 @@ jobs:
         run: |
           git clone https://${{secrets.PAT}}@github.com/Srihari62/gs-act-test.git
           pwd
+          ls
 
       - name: Update Second Org Repo
         run: |
