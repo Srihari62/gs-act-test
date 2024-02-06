@@ -17,7 +17,7 @@ jobs:
           SSH_DEPLOY_KEY: ${{ secrets.SSH }}
           API_TOKEN_GITHUB: ${{ secrets.PAT }}
         with:
-          source-directory: 'output'
+          source-directory: '/home/runner/work/gs-act-test/gs-act-test'
           destination-github-username: 'Srihari62'
           destination-repository-name: 'gs-act-test'
           user-email: srihari6281@gmail.com
