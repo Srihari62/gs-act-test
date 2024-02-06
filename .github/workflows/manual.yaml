@@ -4,22 +4,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  post:
+  push:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Creates output folder and remove markdown
-        run:  |
-              pwd
-      - name: Pushes to public repository
-        id: push_directory
-        uses: cpina/github-action-push-to-another-repository@ssh-deploy-key
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.PAT }}
+      - name: Checkout source code
+        uses: actions/checkout@v2
         with:
-          source-directory: /home/runner/work/gs-act-test/gs-act-test/
-          destination-github-username: 'Srihari62'
-          destination-repository-name: 'gs-act-test'
-          user-email: srihari6281@gmail.com.com
-          commit-message: pushed from $GITHUB_REF
-          target-branch: git
+          token: ${{secrets.PAT}}
+          ref: 'master'
+
+      - name: Push to target repository
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{secrets.PAT}}
+          branch: 'test'
+          repository: Srihari62/gs-act-test
