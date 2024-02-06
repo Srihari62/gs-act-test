@@ -30,7 +30,7 @@ jobs:
 
       - name: Update Second Org Repo
         run: |
-          cp -r /home/runner/work/git-actions/gs-act-test* /home/runner/work/git-actions/git-actions
+          cp -r /home/runner/work/git-actions/gs-act-test /home/runner/work/git-actions/git-actions
           cd git-actions
           git add .
           git commit -m "Update with latest code from first org repo"
