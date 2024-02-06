@@ -14,6 +14,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
+         
+      - name: path 
+        run: pwd
+
       - name: Set up Git
         run: |
           git config --global user.name 'Srihari62'
