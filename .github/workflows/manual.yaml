@@ -19,16 +19,22 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install Git
-        run: sudo apt-get update && sudo apt-get install -y git
+        run:  apt-get update &&  apt-get install -y git
 
-      - name: Set Git user name
-        run: git config --global user.name "Srihari62"
-
-      - name: Set Git user email
-        run: git config --global user.email "srihari6281@gmail.com"
+      - name: Set Git user name and email
+        run: |
+          git config --global user.name "srihari62"
+          git config --global user.email "srihari6281@gmail.com"
 
       - name: Change remote URL
-        run: git remote set-url origin https://Srihari62:${{ secrets.PAT }}@github.com/Srihari62/git-actions.git 
+        run: git remote set-url origin https://srihari62:${{secrets.PAT}}@github.com/zero8dotdev/test-workflow-dispatch.git
+
+      - name: Add changes to Git
+        run: git add . 
+
+      - name: Commit changes
+        run: git commit -m "Code Transfer" 
 
       - name: Push changes to origin
-        run: git push -u origin master
+        run: git push -u origin main
+        
